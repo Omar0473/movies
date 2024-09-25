@@ -1,20 +1,14 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/Api/end_points.dart';
-import 'package:movies/templates/snack_bar_temp.dart';
-import 'app_colors.dart';
+import 'package:movies/tempelates/app_colors.dart';
+import 'package:movies/tempelates/snack_bar_temp.dart';
 
-class SimilarMovieCard extends StatefulWidget {
-  String imagePath;
-  String title;
-  int    rating;
-  String details;
-  SimilarMovieCard({super.key, required this.imagePath,required this.title,required this.rating,required this.details});
+class DetailsCard extends StatefulWidget {
   @override
-  State<SimilarMovieCard> createState() => _SimilarMovieCardState();
+  State<DetailsCard> createState() => _DetailsCardState();
 }
-class _SimilarMovieCardState extends State<SimilarMovieCard> {
+class _DetailsCardState extends State<DetailsCard> {
   bool isSelected = false;
   @override
   Widget build(BuildContext context) {
@@ -40,25 +34,10 @@ class _SimilarMovieCardState extends State<SimilarMovieCard> {
                         topRight: Radius.circular(5),
                         topLeft: Radius.circular(5),
                       ),
-                      color:AppColors.sectionsColor,
+                      color: Colors.pink,
                     ),
                     height: MediaQuery.of(context).size.height * 0.13, // It uses %13 DONT CHANGE IT NIGGA
                     width: MediaQuery.of(context).size.width * 0.25, // It uses %25 DONT CHANGE IT NIGGA
-                    child:ClipRRect(
-                      borderRadius:BorderRadius.circular(5),
-                      child: CachedNetworkImage(
-                        imageUrl:'${EndPoints.imagePath}${widget.imagePath}',
-
-                        errorWidget:(context,url,error)=>Icon(Icons.error_outline_sharp,color:AppColors.yellowColor),
-                        placeholder: (context, url) => Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.yellowColor,
-                          ),
-                        ),
-                        fit:BoxFit.fill,
-
-                      ),
-                    ),
                   ),
                   Row(
                     children: [
@@ -69,19 +48,19 @@ class _SimilarMovieCardState extends State<SimilarMovieCard> {
                       SizedBox(width:4.96.w),
                       Padding(
                         padding: const EdgeInsets.only(top:7),
-                        child: Text('${widget.rating?.toStringAsFixed(1)}',style:TextStyle(color:Colors.white,fontSize:12,fontWeight:FontWeight.normal),overflow:TextOverflow.ellipsis),
+                        child: Text('0.0',style:TextStyle(color:Colors.white,fontSize:12,fontWeight:FontWeight.normal),overflow:TextOverflow.ellipsis),
                       ),
                     ],
                   ),
                   SizedBox(height:1.h),
                   Padding(
                     padding: const EdgeInsets.only(left:7),
-                    child: Text('${widget.title??''}',style:TextStyle(color:Colors.white,fontSize:12,fontWeight:FontWeight.normal),overflow:TextOverflow.ellipsis,maxLines:2),
+                    child: Text('Name',style:TextStyle(color:Colors.white,fontSize:12,fontWeight:FontWeight.normal),overflow:TextOverflow.ellipsis),
                   ),
                   SizedBox(height:2.h),
                   Padding(
                     padding: const EdgeInsets.only(left:7),
-                    child: Text('${widget.details}',style:TextStyle(color:AppColors.descriptionColor,fontSize:10,fontWeight:FontWeight.normal),overflow:TextOverflow.ellipsis),
+                    child: Text('Details',style:TextStyle(color:AppColors.descriptionColor,fontSize:10,fontWeight:FontWeight.normal),overflow:TextOverflow.ellipsis),
                   )
                 ],
               ),
@@ -136,8 +115,3 @@ class _SimilarMovieCardState extends State<SimilarMovieCard> {
     );
   }
 }
-//String imagePath;
-//   String title;
-//   int rating;
-//   String details;
-//   SimilarCards({required this.imagePath,required this.title,required this.rating,required this.details});

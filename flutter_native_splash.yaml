@@ -1,0 +1,12 @@
+flutter_native_splash:
+  color: "#121313" # Background color for splash screen
+  image: assets/images/movies.png # Ensure this image is the right size (1152x1152)
+
+  android_12:
+    image: assets/images/movies.png # Use the correct resolution
+    android_gravity: center # Ensures the image fills the screen without being clipped to a circle
+    icon_background_color: "#121313" # Same as the splash background to prevent circle effects
+
+  ios: true
+  web: false
+  fullscreen: true

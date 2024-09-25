@@ -27,7 +27,7 @@ class PopularMoviesSection extends StatelessWidget {
               fit: BoxFit.fill),
         ),
         Positioned(
-            top: 75.h,
+            top: 50.h,
             bottom: 125.h,
             right: 150.w,
             left: 150.w,
@@ -40,7 +40,7 @@ class PopularMoviesSection extends StatelessWidget {
                 highlightColor: Colors.transparent,
                 child: PosterCard(
                     imagePath:
-                        '${EndPoints.imagePath}${popularMoviesData.posterPath}'))),
+                        '${EndPoints.imagePath}${popularMoviesData.posterPath}', movieId: popularMoviesData?.id?.toInt()??0,))),
         Positioned(
             top: 230.h,
             left: 164.w,
@@ -60,7 +60,7 @@ class PopularMoviesSection extends StatelessWidget {
                       maxLines: 2,
                     )),
                 SizedBox(height: 10.h),
-                Text('${popularMoviesData.releaseDate}',
+                Text('${popularMoviesData.releaseDate?.substring(0,4)}',
                     style: TextStyle(
                         color: AppColors.descriptionColor,
                         fontSize: 12,

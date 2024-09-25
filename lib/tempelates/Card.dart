@@ -1,17 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/Api/end_points.dart';
-import 'package:movies/screens/home_tab/Api/get_upcoming_movies_response.dart';
-import 'package:movies/templates/snack_bar_temp.dart';
-
-import 'app_colors.dart';
-class NewReleasesCard extends StatefulWidget {
-  UpcomingMovieData movieData;
-  NewReleasesCard({required this.movieData});
+import 'package:movies/tempelates/app_colors.dart';
+import 'package:movies/tempelates/snack_bar_temp.dart';
+class Cards extends StatefulWidget {
   @override
-  State<NewReleasesCard> createState() => _NewReleasesCardState();
+  State<Cards> createState() => _CardsState();
 }
-class _NewReleasesCardState extends State<NewReleasesCard> {
+class _CardsState extends State<Cards> {
   bool isSelected = false;
   @override
   Widget build(BuildContext context) {
@@ -22,14 +18,11 @@ class _NewReleasesCardState extends State<NewReleasesCard> {
             borderRadius:BorderRadius.circular(5),
             child: Container(
               decoration:BoxDecoration(
-                  color:AppColors.sectionsColor,
+                  color:Colors.blue,
                   borderRadius:BorderRadius.circular(5)
               ),
               width:96.87.w,
               height:127.74.h,
-              child:ClipRRect(
-                  borderRadius:BorderRadius.circular(5),
-                  child: Image.network('${EndPoints.imagePath}${widget.movieData.posterPath}',fit:BoxFit.fill)),
               //child:Image.asset('assets/images/testImage.png'),
             ),
           ),
@@ -37,6 +30,7 @@ class _NewReleasesCardState extends State<NewReleasesCard> {
               splashColor:Colors.transparent,
               highlightColor:Colors.transparent,
               onTap:(){
+                print("pls");
                 isSelected = !isSelected;
                 isSelected ==true?
                 setState(() {
