@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/tempelates/app_colors.dart';
-class Category extends StatelessWidget {
+
+import 'app_colors.dart';
+class MovieCategory extends StatelessWidget {
   String label;
-  Category({required this.label});
+  MovieCategory({super.key, required this.label});
   @override
   Widget build(BuildContext context) {
     return Container(

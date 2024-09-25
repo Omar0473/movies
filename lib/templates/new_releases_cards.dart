@@ -1,13 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/tempelates/app_colors.dart';
-import 'package:movies/tempelates/snack_bar_temp.dart';
-class Cards extends StatefulWidget {
+import 'package:movies/Api/end_points.dart';
+import 'package:movies/screens/home_tab/Api/get_upcoming_movies_response.dart';
+import 'package:movies/templates/snack_bar_temp.dart';
+
+import 'app_colors.dart';
+class NewReleasesCard extends StatefulWidget {
+  UpcomingMovieData movieData;
+  NewReleasesCard({required this.movieData});
   @override
-  State<Cards> createState() => _CardsState();
+  State<NewReleasesCard> createState() => _NewReleasesCardState();
 }
-class _CardsState extends State<Cards> {
+class _NewReleasesCardState extends State<NewReleasesCard> {
   bool isSelected = false;
   @override
   Widget build(BuildContext context) {
@@ -18,11 +22,14 @@ class _CardsState extends State<Cards> {
             borderRadius:BorderRadius.circular(5),
             child: Container(
               decoration:BoxDecoration(
-                  color:Colors.blue,
+                  color:AppColors.sectionsColor,
                   borderRadius:BorderRadius.circular(5)
               ),
               width:96.87.w,
               height:127.74.h,
+              child:ClipRRect(
+                  borderRadius:BorderRadius.circular(5),
+                  child: Image.network('${EndPoints.imagePath}${widget.movieData.posterPath}',fit:BoxFit.fill)),
               //child:Image.asset('assets/images/testImage.png'),
             ),
           ),
@@ -33,12 +40,12 @@ class _CardsState extends State<Cards> {
                 isSelected = !isSelected;
                 isSelected ==true?
                 setState(() {
-                  final snackBar = SnackBarTemp.SnackBarTempelate(content:'Item added to your watchlist', backgroundColor: AppColors.yellowColor,actionLabel:'undo',labelColor:Colors.black);
+                  final snackBar = SnackBarTemp.snackBarTemplate(content:'Item added to your watchlist', backgroundColor: AppColors.yellowColor,actionLabel:'undo',labelColor:Colors.black);
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 })
                     :
                 setState(() {
-                  final snackBar = SnackBarTemp.SnackBarTempelate(content:'Item removed from your watchlist', backgroundColor:AppColors.yellowColor,actionLabel:'undo',labelColor:Colors.black);
+                  final snackBar = SnackBarTemp.snackBarTemplate(content:'Item removed from your watchlist', backgroundColor:AppColors.yellowColor,actionLabel:'undo',labelColor:Colors.black);
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
                 });

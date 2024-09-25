@@ -5,9 +5,17 @@ import '../../screens/browse_tab/browse_tab.dart';
 import '../../screens/home_tab/home_tab.dart';
 import '../../screens/search_tab/search_tab.dart';
 import '../../screens/watchlist_tab/watchlist_tab.dart';
-class HomeCubit extends Cubit<HomeScreenStates>{
-  HomeCubit():super(HomeScreenInitialState());
+
+class HomeScreenCubit extends Cubit<HomeScreenStates>{
+
+  HomeScreenCubit():super(HomeScreenInitialState());
+
   //todo : hold data - handle logic
-  List<Widget> screens = [Home(),Search(),Browse(),WatchList()];
+
+  static HomeScreenCubit get(context)=>BlocProvider.of(context);
+
+  List<Widget> screens = [Home(),Search(), Browse(),WatchList()];
+
   int selectedIndex = 0;
+
 }
